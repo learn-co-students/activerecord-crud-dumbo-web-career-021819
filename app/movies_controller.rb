@@ -43,7 +43,7 @@ def can_get_the_last_item_in_the_database
 end
 
 def can_get_size_of_the_database
-  Movie.all.size
+  Movie.count
 end
 
 def can_find_the_first_item_from_the_database_using_id
@@ -68,15 +68,16 @@ def can_be_found_updated_and_saved
   # Updtate the title "Awesome Flick" to "Even Awesomer Flick", save it, then return it
   Movie.create(title: "Awesome Flick")
   to_update = Movie.find_by(title: "Awesome Flick")
-  Movie.update(to_update.id, title: "Even Awesomer Flick")
-  to_update.save
+  to_update.update(title: "Even Awesomer Flick")
+  # to_update.save
 end
 
 def can_update_using_update_method
   # Update movie title to "Wat, huh?"
-  newmovie = Movie.create(title: "Wat?")
-  Movie.update(newmovie.id, title: "Wat, huh?")
-  newmovie.save
+  Movie.create(title: "Wat?")
+  movie = Movie.find_by(title: "Wat?")
+  movie.update(title: "Wat, huh?")
+#   newmovie.save
 end
 
 def can_update_multiple_items_at_once
